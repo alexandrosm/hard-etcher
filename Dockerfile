@@ -1,37 +1,17 @@
 FROM resin/amd64-debian
 
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
-RUN echo "deb http://dl.bintray.com/resin-io/debian stable etcher" | tee /etc/apt/sources.list.d/etcher.list
-
+RUN echo "deb http://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/sources.list.d/etcher.list
 
 RUN apt-get update && apt-get install -y \ 
   etcher-electron \
-  apt-utils \
-  clang \
   usbmount \
-  xserver-xorg-core \
   xserver-xorg-input-all \
   xserver-xorg-video-fbdev \
-  xorg \
-  libdbus-1-dev \
-  libgtk2.0-dev \
-  libnotify-dev \
-  libgnome-keyring-dev \
-  libgconf2-dev \
-  libasound2-dev \
-  libcap-dev \
-  libcups2-dev \
-  libxtst-dev \
-  libxss1 \
-  libnss3-dev \
-  fluxbox \
-  libsmbclient \
-  libssh-4 \
-  fbset \
-  libexpat-dev && rm -rf /var/lib/apt/lists/*
+  xorg && rm -rf /var/lib/apt/lists/*
 
 # Move app to filesystem
-COPY ./ /root
+COPY .xinitrc /root
 
 # uncomment if you want systemd
 ENV INITSYSTEM on
