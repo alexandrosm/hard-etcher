@@ -12,6 +12,13 @@ RUN apt-get update && apt-get install -y \
 
 RUN npm install -g asar
 
+# make etcher great again
+RUN asar extract /usr/lib/etcher-electron/resources/app.asar tmpdir \
+    && grep -v -E '(width|height)' tmpdir/lib/gui/etcher.js | sed 's/fullscreen: false/fullscreen: true/' > etcher.js.tmp \
+    && mv etcher.js.tmp tmpdir/lib/gui/etcher.js \
+    && asar pack tmpdir/ /usr/lib/etcher-electron/resources/app.asar \
+    && rm -rf tmpdir
+
 # Move app to filesystem
 COPY .xinitrc /root
 
