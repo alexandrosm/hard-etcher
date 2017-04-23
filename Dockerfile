@@ -6,6 +6,7 @@ RUN echo "deb http://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/so
 RUN apt-get update && apt-get install -y \ 
   etcher-electron \
   build-essential \
+  libudev-dev \
   git \
   usbmount \
   xserver-xorg-input-all \
