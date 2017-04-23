@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
   etcher-electron \
   apt-utils \
   clang \
+  usbmount \
   xserver-xorg-core \
   xserver-xorg-input-all \
   xserver-xorg-video-fbdev \
