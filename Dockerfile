@@ -5,6 +5,7 @@ RUN echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | tee /etc/a
 
 
 RUN apt-get update && apt-get install -y \ 
+  apt-transport-https \
   etcher-electron \
   apt-utils \
   clang \
