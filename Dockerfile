@@ -1,13 +1,10 @@
 FROM resin/amd64-debian
 
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
-RUN echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | tee /etc/apt/sources.list.d/etcher.list
+RUN echo "deb http://dl.bintray.com/resin-io/debian stable etcher" | tee /etc/apt/sources.list.d/etcher.list
 
 
 RUN apt-get update && apt-get install -y \ 
-  apt-transport-https
-
-RUN apt-get install -y \
   etcher-electron \
   apt-utils \
   clang \
