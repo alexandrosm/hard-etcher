@@ -37,4 +37,4 @@ COPY ./ /root
 ENV INITSYSTEM on
 
 # Start app
-CMD ["bash", "/root/start.sh"]
+CMD startx
