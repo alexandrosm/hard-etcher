@@ -30,18 +30,11 @@ RUN apt-get update && apt-get install -y \
   fbset \
   libexpat-dev && rm -rf /var/lib/apt/lists/*
 
-# Set Xorg and FLUXBOX preferences
-RUN mkdir ~/.fluxbox
-RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
-RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
-  && echo "" >> /etc/X11/xinit/xserverrc \
-  && echo 'exec /usr/bin/X -s 0 dpms -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
-
 # Move app to filesystem
-COPY ./ ./
+COPY ./ /root
 
 # uncomment if you want systemd
 ENV INITSYSTEM on
 
 # Start app
-CMD ["bash", "start.sh"]
+CMD ["bash", "/root/start.sh"]
