@@ -1,4 +1,4 @@
-FROM resin/amd64-node
+FROM resin/up-board-node
 
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
 RUN echo "deb http://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/sources.list.d/etcher.list
