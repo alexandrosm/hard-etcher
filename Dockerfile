@@ -43,4 +43,4 @@ COPY ./ ./
 ENV INITSYSTEM on
 
 # Start app
-CMD ["bash", "/usr/src/start.sh"]
+CMD ["bash", "start.sh"]
