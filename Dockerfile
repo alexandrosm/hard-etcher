@@ -5,10 +5,18 @@ RUN echo "deb http://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/so
 
 RUN apt-get update && apt-get install -y \ 
   etcher-electron \
+  build-essential \
+  git \
   usbmount \
   xserver-xorg-input-all \
   xserver-xorg-video-fbdev \
   xorg && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/bsteinsbo/rpi_touch_driver.git \
+    && cd rpi_touch_driver \
+    && make \
+    && make install \
+    && make systemd-install
 
 # Move app to filesystem
 COPY .xinitrc /root
