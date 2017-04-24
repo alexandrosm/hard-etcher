@@ -17,7 +17,8 @@ RUN git clone https://github.com/bsteinsbo/rpi_touch_driver.git \
     && cd rpi_touch_driver \
     && make \
     && make install \
-    && make systemd-install
+    && cp rpi-touch-driver.service /etc/systemd/system \
+    && systemctl enable rpi-touch-driver
 
 # Move app to filesystem
 COPY .xinitrc /root
