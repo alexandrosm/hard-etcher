@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
   xserver-xorg-video-fbdev \
   xorg && rm -rf /var/lib/apt/lists/*
 
-RUN wget https://misc1.dev.resin.io/~jviotti/etcher/fullscreen-mode/etcher-electron_1.0.0-rc.4+fd40462_amd64.deb
-RUN dpkg -i etcher-electron_1.0.0-rc.4+fd40462_amd64.deb
+RUN wget  https://misc1.dev.resin.io/~jviotti/etcher-electron_1.0.0+4ce8d3c_armhf.deb
+RUN dpkg -i etcher-electron_1.0.0+4ce8d3c_armhf.deb
 
 # Move app to filesystem
 COPY .xinitrc /root
