@@ -2,18 +2,22 @@ FROM resin/%%RESIN_MACHINE_NAME%%-debian
 
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
 
+RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
+RUN wget  https://misc1.dev.resin.io/~jviotti/etcher-electron_1.0.0+4ce8d3c_armhf.deb
+
+RUN dpkg -i etcher-electron_1.0.0+4ce8d3c_armhf.deb
+
+RUN apt-get -f install
+
 RUN apt-get update && apt-get install -y \ 
   build-essential \
   libudev-dev \
   git \
   usbmount \
-  wget \
   xserver-xorg-input-all \
   xserver-xorg-video-fbdev \
   xorg && rm -rf /var/lib/apt/lists/*
-
-RUN wget  https://misc1.dev.resin.io/~jviotti/etcher-electron_1.0.0+4ce8d3c_armhf.deb
-RUN dpkg -i etcher-electron_1.0.0+4ce8d3c_armhf.deb
 
 # Move app to filesystem
 COPY .xinitrc /root
