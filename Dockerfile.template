@@ -2,12 +2,9 @@ FROM resin/%%RESIN_MACHINE_NAME%%-debian
 
 RUN apt-get update && apt-get install -y \
 	build-essential \
-	libudev-dev \
 	git \
-	usbmount \
-	xserver-xorg-input-all \
-	xserver-xorg-video-fbdev \
 	gconf-service \
+	libudev-dev \
 	libasound2 \
 	libatk1.0-0 \
 	libcairo2 \
@@ -18,9 +15,6 @@ RUN apt-get update && apt-get install -y \
 	libfreetype6 \
 	libgconf-2-4 \
 	libgdk-pixbuf2.0-0 \
-	wget && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -y \
 	libgtk2.0-0 \
 	libnspr4 \
 	libnss3 \
@@ -32,9 +26,12 @@ RUN apt-get update && apt-get install -y \
 	libxss1 \
 	libxtst6 \
 	policykit-1-gnome \
-	xinit
-
-RUN apt-get install x11-xserver-utils
+	usbmount \
+	wget \
+	x11-xserver-utils \
+	xinit \
+	xserver-xorg-input-all \
+	xserver-xorg-video-fbdev && rm -rf /var/lib/apt/lists/*
 
 RUN wget https://misc1.dev.resin.io/~jviotti/etcher-electron_1.0.0+4ce8d3c_armhf.deb && dpkg -i etcher-electron_1.0.0+4ce8d3c_armhf.deb && rm etcher-electron_1.0.0+4ce8d3c_armhf.deb
 
