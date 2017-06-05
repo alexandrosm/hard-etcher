@@ -45,4 +45,4 @@ COPY .xinitrc /root
 ENV INITSYSTEM on
 
 # Start app
-CMD startx -nocursor
+CMD startx
