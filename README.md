@@ -3,4 +3,4 @@ An adaptation of the etcher project to run on dedicated SBC hardware as a standa
 
 This project is intended to be pushed to a resin.io managed device
 
-Currently only supports the UP board.
+Currently optimised for the Raspberry Pi 3.
